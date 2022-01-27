@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  pg:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_USER=root
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=mail@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=secret
+    ports:
+      - 9000:80
+    depends_on:
+      - pg
